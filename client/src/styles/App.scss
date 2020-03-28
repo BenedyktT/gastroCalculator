@@ -1,0 +1,10 @@
+@import "./global.scss";
+@import "./nutritrion-table.scss";
+@import "./components/Home.scss";
+@import "./components//Header.scss";
+@import "./components/Footer.scss";
+.App {
+  background: url("../assets/bg.jpg");
+  background-position: center;
+  background-size: cover;
+}

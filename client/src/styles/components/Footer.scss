@@ -1,0 +1,12 @@
+.footer {
+  background: $dark-transparent;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: center;
+  img {
+    width: 100px;
+    margin: 1rem;
+  }
+}

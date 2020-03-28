@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+* {
+  font-family: "Roboto", sans-serif;
+}
+$break-narrow: 362px;
+$break-small: 500px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == narrow {
+    @media only screen and (max-width: $break-narrow) {
+      @content;
+    }
+  }
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-small) {
+      @content;
+    }
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) {
+      @content;
+    }
+  }
+}
+$white-transparent: rgba(208, 202, 202, 0.496);
+$dark-transparent: rgba(45, 44, 44, 0.605);
+$blue-light: #b5446e;
+$blue-dark: rgb(235, 92, 144);
+$blue-a: #0affed;
+$blue-b: #194dc3;
+$blue-primary: #1592e6;
+$occupied: #6200ee;
+$text-white: #e2dada;
+$dark: rgb(197, 193, 193);
+$green-a: #ccff66;
+$green-b: #2a8b4e;
+$success: #2a8b4e;
+$danger: rgb(141, 55, 55);
+$white: #f3f3f3;
+$black: #525252;
+
+$gradient-blue: linear-gradient($blue-light, $blue-dark);
+$gradient-blue-alternative: linear-gradient($blue-a, $blue-b);
+$gradient-green: linear-gradient($green-a, $green-b);
+$gradient-success: linear-gradient(130deg, #2a8b4e 50%, #1592e6);
+$gradient-danger: linear-gradient(130deg, #ef427c 50%, #1592e6);
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: $gradient-blue-alternative;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid $danger;
+  color: $white;
+  font-weight: bold;
+  opacity: 0.9;
+  transform: scale(1);
+  transition: transform 350ms, opacity 350ms ease;
+}
+.btn:hover,
+.btn:focus {
+  opacity: 1;
+  transform: scale(0.9);
+}

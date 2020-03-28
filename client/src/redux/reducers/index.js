@@ -1,6 +1,8 @@
 import { combineReducers } from "redux";
-import nutritionValues from "./nutritionValuesReducer";
+import nutritionValues from "./nutritionValues";
+import alerts from "./alerts";
 
 export default combineReducers({
-  nutritionValues
+  nutritionValues,
+  alerts
 });
