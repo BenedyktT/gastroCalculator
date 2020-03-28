@@ -1,10 +1,15 @@
-This project allows you to
+This project is simple app that allows you to get nutrition table out of your favourite recipe.
+It uses jest for testing, react with redux in a front end, and custom styles with sass
 
 ## Prerequisites
 
 after cloning this project you need to install necessary dependencies of the server and client as well
 
 ### `npm i && cd client && npm i`
+
+or
+
+### `yarn add . && cd client && yarn add .`
 
 In the project directory, you can run:
 
@@ -31,3 +36,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
+
+## Biggest issues on the way
+
+1. This structure is prepared to deploy client and server from on place (for example heroku)
+   To not exceed project scope too much I decided to use create react app - which uses jest, because client has its own node_modules - using it main project triggered conflict. In order to fix it I needed to eject create-react-app, which allowed me to remove jest from client. More optimised way would to be to create webpack config manually.
