@@ -1,32 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import NutritionTable from "./NutritionTable";
 import Form from "./Form";
+import Loader from "./Loader";
+import RecipeFact from "./RecipeFact";
 
-const Home = ({ nutrients, loading }) => {
+const Home = ({ values, loading }) => {
+  const [portion, setPortion] = useState(300);
+  const { nutrients, totalWeight } = values;
   return (
     <div className="home">
       <Form />
-      <div className="table">
-        <NutritionTable
-          nutrients={{
-            Fat: 0,
-            Saturated: 0,
-            Monounsaturated: 0,
-            Polyunsaturated: 0,
-            Carbs: 0,
-            Fiber: 0,
-            Water: 0,
-            Protein: 0,
-            Sugars: 0
-          }}
-        />
-      </div>
+      {loading && <Loader />}
+      {!loading && nutrients && (
+        <div className="table">
+          <div className="overall">
+            <span>
+              <input
+                className="portion"
+                type="number"
+                value={portion}
+                name="portion"
+                onChange={e => setPortion(e.target.value)}
+              />
+              g
+            </span>
+            <span>Total weight: {totalWeight}</span>
+          </div>
+
+          <NutritionTable
+            nutrients={nutrients}
+            totalWeight={totalWeight}
+            portion={portion}
+          />
+          {values.healthLabels.length ? (
+            <RecipeFact title="Health labels" label={values.healthLabels} />
+          ) : null}
+          {values.cautions.length ? (
+            <RecipeFact title="Cautions" label={values.cautions} />
+          ) : null}
+        </div>
+      )}
     </div>
   );
 };
 
 export default connect(state => ({
-  nutrients: state.nutritionValues.nutrients,
+  values: state.nutritionValues.nutrients,
   loading: state.nutritionValues.loading
 }))(Home);

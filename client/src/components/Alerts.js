@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-
 import React from "react";
 
 const Alert = ({ alerts }) => {
@@ -14,5 +13,5 @@ const Alert = ({ alerts }) => {
 };
 
 export default connect(state => ({
-  alerts: state.alertReducer
+  alerts: state.alerts
 }))(Alert);

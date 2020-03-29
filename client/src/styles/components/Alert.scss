@@ -1,0 +1,19 @@
+.alert {
+  position: fixed;
+
+  width: 100%;
+  margin: 0 auto;
+
+  color: white;
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: rgba(181, 48, 48, 0.619);
+  padding: 1rem;
+}
+
+.alert-success {
+  background-color: rgb(17, 130, 43);
+  padding: 1rem;
+}

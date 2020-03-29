@@ -21,6 +21,18 @@
 .home__textarea:active {
   outline: $dark-transparent auto 5px;
 }
+.home__textarea::placeholder {
+  color: rgba(230, 227, 227, 0.817);
+}
+.portion {
+  background: $white-transparent;
+  width: 50px;
+}
+.overall {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0.5rem;
+}
 .form {
   width: 100%;
   display: flex;

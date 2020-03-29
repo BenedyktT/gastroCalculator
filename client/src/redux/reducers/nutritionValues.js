@@ -1,7 +1,7 @@
 import { SUBMIT_FAIL, SUBMIT_SUCCESS, SUBMIT } from "../actions/types";
+
 const initialState = {
   loading: null,
-  nutritionValues: "",
   nutrients: ""
 };
 export default (state = initialState, { type, payload }) => {
@@ -12,7 +12,7 @@ export default (state = initialState, { type, payload }) => {
     case SUBMIT_SUCCESS:
       return { ...state, loading: false, nutrients: payload };
     case SUBMIT_FAIL:
-      return { ...state, loading: false };
+      return { ...state, loading: false, nutrients: "" };
     default:
       return state;
   }

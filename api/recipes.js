@@ -8,12 +8,6 @@ router.post(
   "/",
 
   [
-    check("title", "Please include title")
-      .not()
-      .isEmpty(),
-    check("prep", "Please include how to make your recipe")
-      .not()
-      .isEmpty(),
     check("ingr", "Please include ingredienties")
       .not()
       .isEmpty()
@@ -23,14 +17,19 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     try {
       const nutritionValues = await getNutritionValues(req.body);
       if (nutritionValues.errors) {
-        res.status(401).json(nutritionValues);
+        res.status(401).json({ errors: nutritionValues.errors });
         return;
       }
-      const report = generateNutritionReport(nutritionValues, req.body);
+      const prep = req.body.prep ? req.body.prep : "placeholder";
+      let title = req.body.title ? req.body.title : "title";
+      const report = generateNutritionReport(nutritionValues, {
+        prep,
+        title,
+        ingr: req.body.ingr
+      });
       return res.json(report);
     } catch (error) {
       console.error(error.message);

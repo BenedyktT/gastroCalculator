@@ -1,0 +1,24 @@
+.labels {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 1rem;
+}
+.labels__element {
+  background: $dark-transparent;
+  color: white;
+  padding: 1rem;
+  font-size: 0.8rem;
+  box-shadow: 1px 1px 10px $dark-transparent;
+  border-radius: 6px;
+}
+
+.labels-container {
+  background: $dark-transparent;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.label__title {
+  color: white;
+}
