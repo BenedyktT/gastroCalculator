@@ -5,6 +5,7 @@ import Form from "./Form";
 import Loader from "./Loader";
 import RecipeFact from "./RecipeFact";
 import Help from "./Help";
+import { Link } from "react-router-dom";
 
 const Home = ({ values, loading }) => {
   const [portion, setPortion] = useState(300);
@@ -39,9 +40,14 @@ const Home = ({ values, loading }) => {
             {values.healthLabels.length ? (
               <RecipeFact title="Health labels" label={values.healthLabels} />
             ) : null}
-            {values.cautions.length ? (
-              <RecipeFact title="Cautions" label={values.cautions} />
+            {values.dietLabels.length ? (
+              <RecipeFact title="Diet type" label={values.dietLabels} />
             ) : null}
+            <div className="share">
+              <Link to="/add" className="btn">
+                Share this recipe with others
+              </Link>
+            </div>
           </div>
         )}
       </div>

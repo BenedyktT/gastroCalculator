@@ -8,6 +8,7 @@ import "./styles/App.scss";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Alerts from "./components/Alerts";
+import Add from "./components/Add";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/add" component={Add} />
           </Switch>
         </Router>
         <Footer />

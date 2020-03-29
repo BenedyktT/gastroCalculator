@@ -17,8 +17,10 @@
   width: 85%;
   border-radius: 5px;
 }
-.home__textarea:focus,
-.home__textarea:active {
+input:focus,
+textarea:focus,
+input:active,
+textarea:active {
   outline: $dark-transparent auto 5px;
 }
 .home__textarea::placeholder {
@@ -45,4 +47,8 @@
 }
 .table {
   width: 100%;
+}
+
+.share {
+  margin-top: 1rem;
 }

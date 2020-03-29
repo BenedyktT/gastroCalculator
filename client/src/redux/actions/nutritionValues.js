@@ -11,7 +11,10 @@ export const submitRecipe = recipe => async dispatch => {
   } catch (error) {
     dispatch({ type: SUBMIT_FAIL });
     if (error.response && error.response.data) {
-      if (error.response.data.errors.find(e => e.msg.includes("555"))) {
+      if (
+        error.response.data &&
+        error.response.data.errors.find(e => e.msg.includes("555"))
+      ) {
         dispatch(
           setAlert(
             "I couldn't processed this one, could you try again?",

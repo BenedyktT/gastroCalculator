@@ -1,5 +1,4 @@
 import { SUBMIT_FAIL, SUBMIT_SUCCESS, SUBMIT } from "../actions/types";
-
 const initialState = {
   loading: null,
   nutrients: ""
