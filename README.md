@@ -6,11 +6,19 @@ User can add his recipe to database, and browse other users recipes as well
 
 after cloning this project you need to install necessary dependencies of the server and client as well
 
-### `npm i && cd client && npm i`
+### `yarn add && yarn add --prefix client`
 
 or
 
-### `yarn add . && cd client && yarn add .`
+### `npm i && npm i --prefix client`
+
+You also need 3 env variables in .env file to connect with API and with mongodb
+
+### APPLICATION_ID
+
+### APPLICATION_KEY
+
+### MONGO_URI
 
 In the project directory, you can run:
 
@@ -48,3 +56,11 @@ Your app is ready to be deployed!
 1. It creates local database in test enviroment instead of making real db calls
 2. Have unit tests as well as integration tests of endpoints
 3. It works with cool API Edamam which uses language processing to recognize and calculate nutrition values
+
+## Sad things
+
+Due to fast development process app has couple of drawbacks
+
+1. Names of variables could be improved
+2. Minimum amount of comments (I know, I am sorry)
+3. Frontend isn't well tested mostly because of issue with jest conflict described above
