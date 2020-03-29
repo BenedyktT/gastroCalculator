@@ -38,6 +38,8 @@ Launches the test runner in the interactive watch mode.<br />
 
 For testing endpoints I've used supertest
 
+local database will be run for selected tests
+
 ### `npm build`
 
 Builds the app for production to the `build` folder.<br />
