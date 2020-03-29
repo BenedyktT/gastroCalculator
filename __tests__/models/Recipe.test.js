@@ -44,7 +44,9 @@ describe("Recipe model", () => {
       title: "test",
       prep: "prep",
       ingr: ["ingr"],
-      nutrients: { Fat: "1234" }
+      nutrients: { Fat: "1234" },
+      calories: 123,
+      totalWeight: 1230
     });
     const newRecipe = new Recipe(recipe);
     const errors = newRecipe.validateSync();
