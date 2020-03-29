@@ -8,8 +8,12 @@
 @import "./components/Labels.scss";
 @import "./components/Help.scss";
 @import "./components/Add.scss";
+@import "./components/AddStatus.scss";
+@import "./components/Recipes.scss";
 .App {
   background: url("../assets/bg.jpg");
+  height: 100%;
   background-position: center;
   background-size: cover;
+  overflow: hidden;
 }

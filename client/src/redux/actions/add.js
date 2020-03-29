@@ -8,7 +8,7 @@ export const add = recipe => async dispatch => {
     await Axios.post("/save", recipe);
     dispatch({ type: ADD_SUCCESS });
   } catch (error) {
-    dispatch({ type: ADD_FAIL });
+    dispatch({ type: ADD_FAIL, payload: error.response.data.errors[0] });
     if (error.response && error.response.data.errors) {
       error.response.data.errors.forEach(e =>
         dispatch(setAlert(e.msg, "danger"))
@@ -19,3 +19,6 @@ export const add = recipe => async dispatch => {
     }
   }
 };
+
+export const addFail = message => dispatch =>
+  dispatch({ type: ADD_FAIL, payload: { msg: message } });

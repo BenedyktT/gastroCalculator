@@ -1,5 +1,9 @@
 .footer {
   background: $dark-transparent;
+  position: relative;
+  bottom: 0;
+  width: 100vw;
+  margin-top: 5rem;
   color: white;
   display: flex;
   align-items: center;

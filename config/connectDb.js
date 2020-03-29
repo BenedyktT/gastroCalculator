@@ -12,7 +12,6 @@ const connectDB = async () => {
       useCreateIndex: true,
       useFindAndModify: false
     };
-
     await mongoose.connect(uri, mongooseOpts);
     mongoose.connection.on("connected", () => console.log("connected DB"));
   } else {

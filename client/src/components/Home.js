@@ -13,6 +13,9 @@ const Home = ({ values, loading }) => {
   const { nutrients, totalWeight } = values;
   return (
     <Fragment>
+      <div className="home__head">
+        <h1>Enter recipy and generate nutrition table</h1>
+      </div>
       <div className="home">
         <Form />
         {loading && <Loader />}

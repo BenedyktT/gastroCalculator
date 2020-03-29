@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { add } from "../redux/actions/add";
+import { add, addFail } from "../redux/actions/add";
 import { setAlert } from "../redux/actions/alerts";
+import Loader from "./Loader";
 
-const Add = ({ loading, add, nutrients, history }) => {
+const Add = ({ loading, add, nutrients, history, error, setAlert }) => {
   const [value, setValue] = useState({ title: "", prep: "" });
+  const [isSubmitted, setSubmitted] = useState(false);
   const onChange = e => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
@@ -17,11 +19,25 @@ const Add = ({ loading, add, nutrients, history }) => {
     if (!nutrients) {
       setAlert("I have lost your recipe, can you start again?", "danger");
       history.push("/");
+      return;
+    }
+    if (error) {
+      setAlert(error.msg, "danger");
+      history.push("/");
+      return;
     }
     add(recipe);
+    setSubmitted(true);
   };
+  useEffect(() => {
+    if (isSubmitted && !loading) {
+      history.push("/addStatus");
+      setSubmitted(false);
+    }
+  }, [loading, isSubmitted, history]);
   return (
     <div>
+      {loading && isSubmitted && <Loader />}
       <form onSubmit={onSubmit} className="form add-form">
         <div className="add-element">
           <label htmlFor="title">Add title</label>
@@ -53,7 +69,8 @@ const Add = ({ loading, add, nutrients, history }) => {
 export default connect(
   state => ({
     loading: state.add.loading,
-    nutrients: state.nutritionValues.nutrients
+    nutrients: state.nutritionValues.nutrients,
+    error: state.add.error
   }),
-  { add }
+  { add, addFail, setAlert }
 )(Add);

@@ -7,6 +7,26 @@ const Recipe = require("../models/Recipe");
 router.get("/", async (req, res) => {
   try {
     const recipe = await Recipe.find();
+    const titles = recipe.map(({ title, prep, _id }) => ({
+      title,
+      prep,
+      id: _id
+    }));
+    return res.json(titles);
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).json({ errors: [{ msg: error.message }] });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: "Couldn't find recipy" }] });
+    }
     return res.json(recipe);
   } catch (error) {
     console.error(error.message);
@@ -35,7 +55,6 @@ router.post(
     }
     try {
       const recipes = await Recipe.find();
-      console.log(recipes);
       const recipeExist = recipes.find(
         ({ title, prep }) => title === req.body.title || prep === req.body.prep
       );
@@ -44,6 +63,7 @@ router.post(
       }
       const newRecipe = new Recipe(req.body);
       await newRecipe.save();
+      return res.json(newRecipe);
     } catch (error) {
       console.error(error.message);
       return res.status(500).json({ errors: [{ msg: error.message }] });

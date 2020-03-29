@@ -1,0 +1,42 @@
+.recipe-head {
+  text-align: center;
+}
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  background: $dark-transparent;
+  gap: 1rem;
+  justify-items: center;
+  align-content: center;
+}
+.recipe__element {
+  list-style: none;
+  margin: 1rem;
+  border: 1px solid $blue-primary;
+  padding: 1rem;
+  border-radius: 7px;
+  background: rgba($color: $blue-primary, $alpha: 0);
+  transition: background-color 350ms ease-in-out;
+  &:hover,
+  &:focus {
+    background: rgba($color: $blue-primary, $alpha: 1);
+  }
+}
+
+.recipe__link {
+  color: white;
+  text-decoration: none;
+}
+
+.desc {
+  background: $dark-transparent;
+  color: white;
+  padding: 1rem;
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 70%;
+}
