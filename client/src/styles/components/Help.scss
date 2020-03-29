@@ -1,0 +1,25 @@
+.help {
+  background-color: $dark-transparent;
+  padding: 1rem;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 0.3rem;
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
+}
+.help.active {
+  opacity: 1;
+}
+.help-btn {
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: $dark-transparent;
+  border: 3px solid $blue-primary;
+  outline: none;
+  transition: background-color 150ms ease-in-out;
+}
+.help-btn:focus,
+.help-btn:hover {
+  background-color: $blue-primary;
+}

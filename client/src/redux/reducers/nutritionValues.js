@@ -8,7 +8,6 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SUBMIT:
       return { ...state, loading: true };
-
     case SUBMIT_SUCCESS:
       return { ...state, loading: false, nutrients: payload };
     case SUBMIT_FAIL:
