@@ -9,5 +9,8 @@ app.use(express.json({ extended: false }));
 
 app.use("/recipes", require("./api/recipes"));
 app.use("/save", require("./api/save"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 module.exports = app;
