@@ -2,7 +2,7 @@
   "name": "gastroFreakassigment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "listen.js",
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
@@ -11,7 +11,6 @@
   },
   "scripts": {
     "test": "jest --runInBand --watch",
-    "start": "node listen.js",
     "server": "nodemon listen.js --ignore './client/'",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
