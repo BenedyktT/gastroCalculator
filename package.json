@@ -1,5 +1,5 @@
 {
-  "name": "gastroFreakassigment",
+  "name": "gastrofreakassigment",
   "version": "1.0.0",
   "description": "",
   "main": "listen.js",
@@ -10,11 +10,12 @@
     ]
   },
   "scripts": {
+    "start": "node listen.js",
     "test": "jest --runInBand --watch",
     "server": "nodemon listen.js --ignore './client/'",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm install && npm install --prefix client && npm run build --prefix client",
+    "build": "npm install --prefix client && npm run build --prefix client",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
