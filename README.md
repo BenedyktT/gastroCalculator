@@ -1,5 +1,6 @@
 This project is simple app that allows you to get nutrition table out of your favourite recipe.
-It uses jest for testing, react with redux in a front end, and custom styles with sass
+It uses jest for testing, react with redux in a front end, and custom styles with sass.
+User can add his recipe to database, and browse other users recipes as well
 
 ## Prerequisites
 
@@ -41,3 +42,9 @@ Your app is ready to be deployed!
 
 1. This structure is prepared to deploy client and server from on place (for example heroku)
    To not exceed project scope too much I decided to use create react app - which uses jest, because client has its own node_modules - using it main project triggered conflict. In order to fix it I needed to eject create-react-app, which allowed me to remove jest from client. More optimised way would to be to create webpack config manually.
+
+## Cool things about it
+
+1. It creates local database in test enviroment instead of making real db calls
+2. Have unit tests as well as integration tests of endpoints
+3. It works with cool API Edamam which uses language processing to recognize and calculate nutrition values
