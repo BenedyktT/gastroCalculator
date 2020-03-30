@@ -32,7 +32,7 @@ const Home = ({ values, loading }) => {
                 />
                 g
               </span>
-              <span>Total weight: {totalWeight}</span>
+              <span>Total weight: {parseInt(totalWeight)}</span>
             </div>
 
             <NutritionTable

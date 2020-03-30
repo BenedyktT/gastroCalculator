@@ -2,6 +2,10 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+html,
+body {
+  height: 100%;
+}
 $break-narrow: 362px;
 $break-small: 500px;
 $break-large: 1024px;
