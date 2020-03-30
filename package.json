@@ -1,6 +1,7 @@
 {
-  "name": "gastrofreakassigment",
+  "name": "gastrocalculatorassigment",
   "version": "1.0.0",
+  "homepage": "https://gastrocalculator.herokuapp.com/",
   "description": "",
   "main": "listen.js",
   "jest": {
@@ -20,7 +21,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mongoose": "^5.9.6",
     "concurrently": "^5.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -29,9 +32,5 @@
     "mongodb-memory-server": "^6.5.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "mongoose": "^5.9.6"
   }
 }
