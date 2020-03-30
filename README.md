@@ -3,7 +3,7 @@ It uses jest for testing, react with redux in a front end, and custom styles wit
 User can add his recipe to database, and browse other users recipes as well
 
 live project is available here:
-### `[http://gastrocalculator.herokuapp.com](http://gastrocalculator.herokuapp.com)`
+### [http://gastrocalculator.herokuapp.com](http://gastrocalculator.herokuapp.com)
 
 ## Prerequisites
 
