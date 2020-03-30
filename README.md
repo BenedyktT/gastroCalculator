@@ -49,8 +49,9 @@ local database will be run for selected tests
 ## Cool things about it
 
 1. It creates local database in test enviroment instead of making real db calls
-2. Have unit tests as well as integration tests of endpoints
-3. It works with cool API Edamam which uses language processing to recognize and calculate nutrition values
+1. Have unit tests as well as integration tests of endpoints
+1. It works with cool API Edamam which uses language processing to recognize and calculate nutrition values
+1. State mangament is well organised, every action is dispatched trough function, not directly in component, so front end part is easy to scale
 
 ## Sad things
 
