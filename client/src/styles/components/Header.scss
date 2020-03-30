@@ -6,6 +6,9 @@
   align-items: center;
   h1 {
     margin: 0;
+    @include respond-to(handhelds) {
+      font-size: 1rem;
+    }
   }
   a {
     color: $white;
@@ -24,7 +27,12 @@ a:focus {
 }
 
 .nav {
-  a {
-    margin: 0 1rem;
+}
+.nav__element--home {
+  @include respond-to(handhelds) {
+    display: none;
   }
+}
+.nav__element {
+  margin: 0.4rem;
 }
