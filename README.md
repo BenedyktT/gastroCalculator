@@ -59,3 +59,4 @@ Due to fast development process app has couple of drawbacks
 1. Names of variables could be improved
 1. Minimum amount of comments (I know, I am sorry)
 1. Frontend isn't well tested mostly because of issue with jest conflict described above, I skipped it simply because assigment is focused on backend
+1. main background image isn't lazy loaded and isn't sufficiently optimized
