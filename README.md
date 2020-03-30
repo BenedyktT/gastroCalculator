@@ -6,11 +6,9 @@ User can add his recipe to database, and browse other users recipes as well
 
 after cloning this project you need to install necessary dependencies of the server and client as well
 
-### `yarn add && yarn add --prefix client`
+### `npm run deps`
 
-or
-
-### `npm i && npm i --prefix client`
+Install dependencies for client and server
 
 You also need 3 env variables in .env file to connect with API and with mongodb
 
@@ -39,14 +37,6 @@ Launches the test runner in the interactive watch mode.<br />
 For testing endpoints I've used supertest
 
 local database will be run for selected tests
-
-### `npm build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
 ## Biggest issues on the way
 
