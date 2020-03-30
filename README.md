@@ -2,6 +2,9 @@ This project is simple app that allows you to get nutrition table out of your fa
 It uses jest for testing, react with redux in a front end, and custom styles with sass.
 User can add his recipe to database, and browse other users recipes as well
 
+live project is available here:
+### `[http://gastrocalculator.herokuapp.com](http://gastrocalculator.herokuapp.com)`
+
 ## Prerequisites
 
 after cloning this project you need to install necessary dependencies of the server and client as well
