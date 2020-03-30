@@ -53,7 +53,7 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
                 />
                 g
               </span>
-              <span>Total weight: {totalWeight}</span>
+              <span>Total weight: {parseInt(totalWeight)}</span>
             </div>
 
             <NutritionTable

@@ -1,7 +1,11 @@
 .home {
   display: grid;
+  height: 100%;
   grid-template-columns: 1fr;
   padding: 1rem;
+  gap: 4rem;
+  justify-items: center;
+
   @include respond-to(wide-screens) {
     grid-template-columns: 1fr 1fr;
   }
