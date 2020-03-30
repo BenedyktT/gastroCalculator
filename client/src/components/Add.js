@@ -56,7 +56,7 @@ const Add = ({ loading, add, nutrients, history, error, setAlert }) => {
               className="add-element"
               onChange={onChange}
               name="prep"
-              placeholder="title"
+              placeholder="prep"
             />
           </div>
           <input type="submit" className="btn" value=" Add this recipe" />
