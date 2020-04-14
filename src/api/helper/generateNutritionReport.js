@@ -6,22 +6,22 @@ module.exports = (nutritionValues, { prep, title, ingr }) => {
     healthLabels,
     cautions,
     totalNutrients,
-    totalDaily
+    totalDaily,
   } = nutritionValues;
   const nutrients = [
     ...Object.values(totalNutrients),
-    ...Object.values(totalDaily)
+    ...Object.values(totalDaily),
   ]
     .reduce((acc, curr) => {
-      const x = acc.find(e => e.label === curr.label);
+      const x = acc.find((e) => e.label === curr.label);
       if (!x) {
         return (acc = [...acc, curr]);
       }
       const toMerge = {
         amount: parseInt(x.quantity),
-        amountUnit: x.unit
+        amountUnit: x.unit,
       };
-      acc = acc.filter(e => e !== x);
+      acc = acc.filter((e) => e !== x);
       return (acc = [...acc, { ...curr, ...toMerge }]);
     }, [])
     .reduce((acc, curr) => {
@@ -32,16 +32,16 @@ module.exports = (nutritionValues, { prep, title, ingr }) => {
             quantity: curr.quantity,
             unit: curr.unit,
             amount: curr.amount,
-            amountUnit: curr.amountUnit
-          }
+            amountUnit: curr.amountUnit,
+          },
         };
       }
       return {
         ...acc,
         [curr.label]: {
           quantity: curr.quantity,
-          unit: curr.unit
-        }
+          unit: curr.unit,
+        },
       };
     }, {});
   const nutritionReport = {
@@ -53,7 +53,7 @@ module.exports = (nutritionValues, { prep, title, ingr }) => {
     dietLabels,
     healthLabels,
     cautions,
-    nutrients
+    nutrients,
   };
   return nutritionReport;
 };

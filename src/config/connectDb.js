@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const mongod = new MongoMemoryServer();
+const { dbKey } = require("./index");
 
 const connectDB = async () => {
   if (process.env.NODE_ENV === "test") {
@@ -10,19 +11,19 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-      useFindAndModify: false
+      useFindAndModify: false,
     };
     await mongoose.connect(uri, mongooseOpts);
     mongoose.connection.on("connected", () => console.log("connected DB"));
   } else {
     try {
       await mongoose.connect(
-        process.env.MONGO_URI,
+        dbKey,
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
           useCreateIndex: true,
-          useFindAndModify: false
+          useFindAndModify: false,
         },
         console.log("connected to db")
       );

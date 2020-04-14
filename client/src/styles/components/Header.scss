@@ -26,8 +26,6 @@ a:focus {
   background: $dark-transparent;
 }
 
-.nav {
-}
 .nav__element--home {
   @include respond-to(handhelds) {
     display: none;

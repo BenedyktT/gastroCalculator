@@ -11,9 +11,9 @@
     ]
   },
   "scripts": {
-    "start": "node ./listen.js",
+    "start": "node ./src/listen.js",
     "test": "jest --runInBand --watch",
-    "server": "nodemon listen.js --ignore './client/'",
+    "server": "nodemon ./src/listen.js --ignore './client/'",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "deps": "npm i && npm i --prefix client",

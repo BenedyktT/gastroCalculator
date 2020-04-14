@@ -6,9 +6,8 @@ const root = require("path").join(__dirname, "client", "build");
 connectDb.connectDB();
 
 app.use(express.json({ extended: false }));
-
-app.use("/recipes", require("./api/recipes"));
-app.use("/save", require("./api/save"));
+app.use("/recipes", require("./api/routes/recipes"));
+app.use("/save", require("./api/routes/save"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(root));
