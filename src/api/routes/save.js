@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-const { saveRecipe, getAll, getRecipe } = require("./controllers/recipe");
+const { saveRecipe, getAll, getRecipe } = require("../controllers/recipe");
 //get all recipes
 
 router.get("/", async (req, res) => {
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const recipe = await getRecipe(req.params.id);
   if (recipe.errors) {
-    res.status(404).json(recipe);
+    res.status(400).json(recipe);
     return;
   }
   return res.status(200).json(recipe);

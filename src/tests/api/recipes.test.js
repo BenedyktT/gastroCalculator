@@ -1,8 +1,8 @@
-const recipes = require("../../api/recipes");
+const recipes = require("../../api/routes/recipes");
 const supertest = require("supertest");
 const app = require("../../server");
 const request = supertest(app);
-jest.mock("../../api/helper/getNutritionValues.js");
+jest.mock("../services/getNutritionValues.test.js");
 
 describe("recipe endpoint", () => {
   it("should exist", () => {
@@ -23,7 +23,7 @@ describe("recipe endpoint", () => {
     const res = await request.post("/recipes").send({
       title: "test",
       prep: "prep",
-      ingr: ["600g beef", "100g lettuce"]
+      ingr: ["600g beef", "100g lettuce"],
     });
     expect(res.status).toBe(200);
   });

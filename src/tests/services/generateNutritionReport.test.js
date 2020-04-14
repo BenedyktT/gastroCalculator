@@ -1,16 +1,17 @@
-const generateNutritionReport = require("../../api/helper/generateNutritionReport");
-const getNutritionValues = require("../../api/helper/getNutritionValues");
-jest.mock("../../api/helper/getNutritionValues");
+const generateNutritionReport = require("../../services/generateNutritionReport");
+const fetchValues = require("../../services/fetchValues");
+
+jest.mock("../../services/fetchValues");
 describe("generateNutritionReport()", () => {
   it("exists", () => {
     expect(generateNutritionReport).toBeDefined();
   });
   it("should contain report", async () => {
-    const nutritions = await getNutritionValues();
+    const nutritions = await fetchValues();
     const report = generateNutritionReport(nutritions, {
       title: "test",
       prep: "testprep",
-      ingr: ["test"]
+      ingr: ["test"],
     });
     expect(report).toBeDefined();
     expect(report.calories).toBe(1230);

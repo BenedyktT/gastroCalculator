@@ -1,10 +1,10 @@
-const getNutritionValues = require("../../helper/getNutritionValues");
-const generateNutritionReport = require("../../helper/generateNutritionReport");
-const Recipe = require("../../../models/Recipe");
+const fetchValues = require("../../services/fetchValues");
+const generateNutritionReport = require("../../services/generateNutritionReport");
+const Recipe = require("../../models/Recipe");
 
 module.exports = {
   generateReport: async (recipe) => {
-    const nutritionValues = await getNutritionValues(recipe);
+    const nutritionValues = await fetchValues(recipe);
     if (nutritionValues.errors) {
       return { errors: nutritionValues.errors };
     }

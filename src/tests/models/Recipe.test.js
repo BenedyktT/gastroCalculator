@@ -1,5 +1,5 @@
-const Recipe = require("../../models/Recipe");
 const db = require("../../config/connectDb");
+const Recipe = require("../../models/Recipe");
 
 beforeAll(async () => {
   await db.connectDB();
@@ -21,7 +21,7 @@ describe("Recipe model", () => {
       title: "test",
       prep: "prep",
       ingr: [],
-      nutrients: {}
+      nutrients: {},
     });
     const error = recipe.validateSync();
     expect(error.errors.ingr.message).toBe("Include at least one ingredient");
@@ -31,7 +31,7 @@ describe("Recipe model", () => {
       title: "test",
       prep: "prep",
       ingr: ["ingr"],
-      nutrients: {}
+      nutrients: {},
     });
     const error = recipe.validateSync();
     expect(error.errors).toHaveProperty("nutrients");
@@ -46,7 +46,7 @@ describe("Recipe model", () => {
       ingr: ["ingr"],
       nutrients: { Fat: "1234" },
       calories: 123,
-      totalWeight: 1230
+      totalWeight: 1230,
     });
     const newRecipe = new Recipe(recipe);
     const errors = newRecipe.validateSync();

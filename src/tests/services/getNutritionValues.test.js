@@ -1,4 +1,4 @@
-const getNutritionValues = require("../../api/helper/getNutritionValues");
+const fetchValues = require("../../services/fetchValues");
 const axios = require("axios");
 const exampleResponse = {
   calories: 1230,
@@ -9,7 +9,7 @@ const exampleResponse = {
     "PEANUT_FREE",
     "TREE_NUT_FREE",
     "ALCOHOL_FREE",
-    "SULPHITE_FREE"
+    "SULPHITE_FREE",
   ],
   totalDaily: {
     CA: { label: "Calcium", quantity: 15.304499999999997, unit: "%" },
@@ -36,7 +36,7 @@ const exampleResponse = {
     VITC: { label: "Vitamin C", quantity: 12.444444444444445, unit: "%" },
     VITD: { label: "Vitamin D", quantity: 166.66666666666666, unit: "%" },
     VITK1: { label: "Vitamin K", quantity: 78.25750000000001, unit: "%" },
-    ZN: { label: "Zinc", quantity: 160.27272727272728, unit: "%" }
+    ZN: { label: "Zinc", quantity: 160.27272727272728, unit: "%" },
   },
   totalNutrients: {
     CA: { label: "Calcium", quantity: 153.045, unit: "mg" },
@@ -62,7 +62,7 @@ const exampleResponse = {
     RIBF: {
       label: "Riboflavin (B2)",
       quantity: 1.2570000000000001,
-      unit: "mg"
+      unit: "mg",
     },
     SUGAR: { label: "Sugars", quantity: 3.76, unit: "g" },
     THIA: { label: "Thiamin (B1)", quantity: 0.5209999999999999, unit: "mg" },
@@ -74,36 +74,40 @@ const exampleResponse = {
     VITD: { label: "Vitamin D", quantity: 25, unit: "IU" },
     VITK1: { label: "Vitamin K", quantity: 93.909, unit: "µg" },
     WATER: { label: "Water", quantity: 503.59, unit: "g" },
-    ZN: { label: "Zinc", quantity: 17.630000000000003, unit: "mg" }
+    ZN: { label: "Zinc", quantity: 17.630000000000003, unit: "mg" },
   },
   totalNutrientsKCal: {
     CHOCDF_KCAL: {
       label: "Calories from carbohydrates",
       quantity: 31,
-      unit: "kcal"
+      unit: "kcal",
     },
     ENERC_KCAL: { label: "Energy", quantity: 1219, unit: "kcal" },
     FAT_KCAL: { label: "Calories from fat", quantity: 765, unit: "kcal" },
-    PROCNT_KCAL: { label: "Calories from protein", quantity: 423, unit: "kcal" }
+    PROCNT_KCAL: {
+      label: "Calories from protein",
+      quantity: 423,
+      unit: "kcal",
+    },
   },
   totalWeight: 704.5,
   uri:
     "http://www.edamam.com/ontologies/edamam.owl#recipe_b1427abc10af4cb9befdf3ee8d1e2ac8",
-  yield: 6
+  yield: 6,
 };
 
 jest.mock("axios");
 
-describe("getNutriotionValues", () => {
+describe("fetchValues", () => {
   const data = {
-    ingr: ["500g beef steak", "200g asparagus", "1tsp olive oil"]
+    ingr: ["500g beef steak", "200g asparagus", "1tsp olive oil"],
   };
   it("should exist", () => {
-    expect(getNutritionValues).toBeDefined();
+    expect(fetchValues).toBeDefined();
   });
   it("should give response", async () => {
     axios.post.mockResolvedValue({ data: exampleResponse });
-    const res = await getNutritionValues(data);
+    const res = await fetchValues(data);
     expect(res).toBeDefined();
     return expect(res).toHaveProperty("calories", "cautions", "dietLabels");
   });

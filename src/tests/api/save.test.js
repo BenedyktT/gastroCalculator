@@ -11,7 +11,7 @@ const payload = {
   ingr: ["ingr"],
   nutrients: { Fat: 12 },
   calories: 123,
-  totalWeight: 1230
+  totalWeight: 1230,
 };
 
 beforeAll(async () => {
@@ -31,7 +31,7 @@ describe("save post", () => {
     const res = await request.post("/save");
     expect(res).toBeDefined();
     expect(res.header).toMatchObject({
-      "content-type": "application/json; charset=utf-8"
+      "content-type": "application/json; charset=utf-8",
     });
   });
   test("it gives 400 status when hit without data", async () => {
