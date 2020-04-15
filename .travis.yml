@@ -1,0 +1,21 @@
+language: node_js
+node_js: "node"
+dist: trusty
+sudo: required
+services:
+  - mongodb
+  - redis-server
+env:
+  - NODE_ENV=test PORT=3000
+cache:
+  directories:
+    - node_modules
+    - client/node_modules
+install:
+  - npm install
+  - npm run heroku-postbuild
+before_script:
+  - nohup npm run start &
+script:
+  - sleep 3
+  - npm run test
