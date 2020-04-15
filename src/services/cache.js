@@ -1,5 +1,4 @@
 const redis = require("redis");
-const mongoose = require("mongoose");
 const redisUrl = require("../config/index");
 const { promisify } = require("util");
 const client = redis.createClient(redisUrl);
