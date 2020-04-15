@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/BenedyktT/gastroCalculator.svg?branch=master)](https://travis-ci.org/BenedyktT/gastroCalculator)
+
+
 This project is simple app that allows you to get nutrition table out of your favourite recipe.
 It uses jest for testing, react with redux in a front end, and custom styles with sass.
 User can add his recipe to database, and browse other users recipes as well
