@@ -4,10 +4,10 @@ const { promisify } = require("util");
 
 let client;
 
-if (process.env.REDISTOGO_URL) {
-  const rtg = require("url").parse(process.env.REDISTOGO_URL);
+if (process.env.REDISCLOUD_URL) {
+  const rtg = require("url").parse(process.env.REDISCLOUD_URL);
   client = redis.createClient(rtg.port, rtg.hostname);
-  redis.auth(rtg.auth.split(":")[1]);
+  client.auth(rtg.auth.split(":")[1]);
 } else {
   client = redis.createClient(localUrl);
 }
