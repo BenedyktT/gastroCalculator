@@ -1,7 +1,17 @@
 const redis = require("redis");
-const redisUrl = require("../config/index");
+const localUrl = require("../config/index");
 const { promisify } = require("util");
-const client = redis.createClient(redisUrl);
+
+let client;
+
+if (process.env.REDISTOGO_URL) {
+  const rtg = require("url").parse(process.env.REDISTOGO_URL);
+  client = redis.createClient(rtg.port, rtg.hostname);
+  redis.auth(rtg.auth.split(":")[1]);
+} else {
+  client = redis.createClient(localUrl);
+}
+
 client.hget = promisify(client.hget);
 class Cache {
   constructor(model) {
