@@ -4,8 +4,8 @@ const { promisify } = require("util");
 
 let client;
 
-if (process.env.REDISCLOUD_URL) {
-  const rtg = require("url").parse(process.env.REDISCLOUD_URL);
+if (process.env.REDIS_URL) {
+  const rtg = require("url").parse(process.env.REDIS_URL);
   client = redis.createClient(rtg.port, rtg.hostname);
   client.auth(rtg.auth.split(":")[1]);
 } else {
