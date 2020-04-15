@@ -10,7 +10,7 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
   const [portion, setPortion] = useState(300);
   useEffect(() => {
     getRecipe(match.params.id);
-  }, []);
+  }, [getRecipe, match.params.id]);
   const render = () => {
     const {
       nutrients,
@@ -19,7 +19,7 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
       totalWeight,
       title,
       prep,
-      ingr
+      ingr,
     } = recipe;
     return (
       <div className="home">
@@ -33,7 +33,7 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
           <div>
             <h2>Ingredienties:</h2>
             <ul className="ingr">
-              {ingr.map(e => (
+              {ingr.map((e) => (
                 <li key={Math.random()}>{e}</li>
               ))}
             </ul>
@@ -49,7 +49,7 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
                   type="number"
                   value={portion}
                   name="portion"
-                  onChange={e => setPortion(e.target.value)}
+                  onChange={(e) => setPortion(e.target.value)}
                 />
                 g
               </span>
@@ -88,6 +88,6 @@ const Recipe = ({ match, getRecipe, recipe, loading }) => {
 };
 
 export default connect(
-  state => ({ recipe: state.recipes.recipe, loading: state.recipes.loading }),
+  (state) => ({ recipe: state.recipes.recipe, loading: state.recipes.loading }),
   { getRecipe }
 )(Recipe);

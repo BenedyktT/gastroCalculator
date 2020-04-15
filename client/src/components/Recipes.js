@@ -7,13 +7,13 @@ import { Link } from "react-router-dom";
 const Recipes = ({ titles, loading, getTitles }) => {
   useEffect(() => {
     getTitles();
-  }, []);
+  }, [getTitles]);
   const render = () => {
     return (
       <Fragment>
         <h1 className="recipe-head">Our users recipes</h1>
         <ul className="recipe-grid">
-          {titles.map(title => (
+          {titles.map((title) => (
             <li className="recipe__element" key={title.id}>
               <Link className="recipe__link" to={`/recipe/${title.id}`}>
                 {title.title}
@@ -29,6 +29,6 @@ const Recipes = ({ titles, loading, getTitles }) => {
 };
 
 export default connect(
-  state => ({ titles: state.recipes.titles, loading: state.recipes.loading }),
+  (state) => ({ titles: state.recipes.titles, loading: state.recipes.loading }),
   { getTitles }
 )(Recipes);
