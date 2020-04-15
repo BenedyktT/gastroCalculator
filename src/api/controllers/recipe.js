@@ -1,7 +1,8 @@
 const fetchValues = require("../../services/fetchValues");
 const generateNutritionReport = require("../../services/generateNutritionReport");
 const Recipe = require("../../models/Recipe");
-
+const Cache = require("../../services/cache");
+const cache = new Cache(Recipe.collection.collectionName);
 module.exports = {
   generateReport: async (recipe) => {
     const nutritionValues = await fetchValues(recipe);
@@ -21,7 +22,7 @@ module.exports = {
         ({ title, prep }) => title === recipe.title || prep === recipe.prep
       );
       if (recipeExist) {
-        return res.status(400).json({ errors: [{ msg: "Recipe exists" }] });
+        return { errors: [{ msg: "Recipe exists" }] };
       }
       const newRecipe = new Recipe(recipe);
       await newRecipe.save();
@@ -31,6 +32,10 @@ module.exports = {
     }
   },
   getAll: async () => {
+    const getCache = await cache.getCache();
+    if (getCache) {
+      return JSON.parse(getCache);
+    }
     try {
       const recipe = await Recipe.find();
       const titles = recipe.map(({ title, prep, _id }) => ({
@@ -38,17 +43,23 @@ module.exports = {
         prep,
         id: _id,
       }));
+      cache.setCache(titles, "all");
       return titles;
     } catch (error) {
       return { errors: [{ msg: error.message }] };
     }
   },
   getRecipe: async (id) => {
+    const getCache = await cache.getCache(id);
+    if (getCache) {
+      return JSON.parse(getCache);
+    }
     try {
       const recipe = await Recipe.findById(id);
       if (!recipe) {
         return { errors: [{ msg: "Couldn't find recipy" }] };
       }
+      cache.setCache(recipe, id);
       return recipe;
     } catch (error) {
       return { errors: [{ msg: "Couldn't find recipy" }] };

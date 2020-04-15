@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const { saveRecipe, getAll, getRecipe } = require("../controllers/recipe");
+const cleanHash = require("../middlewares/cleanHash");
 //get all recipes
 
 router.get("/", async (req, res) => {
@@ -24,7 +25,7 @@ router.get("/:id", async (req, res) => {
 
 router.post(
   "/",
-
+  cleanHash,
   [
     check("ingr", "Please include ingredienties").not().isEmpty(),
     check("title", "Please include Title").not().isEmpty(),
