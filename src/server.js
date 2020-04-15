@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const connectDb = require("./config/connectDb");
 const path = require("path");
-const root = require("path").join(__dirname, "client", "build");
+const root = require("path").join(__dirname, "/../client", "build");
 connectDb.connectDB();
 
 app.use(express.json({ extended: false }));
