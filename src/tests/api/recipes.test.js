@@ -2,9 +2,8 @@ const recipes = require("../../api/routes/recipes");
 const supertest = require("supertest");
 const app = require("../../server");
 const request = supertest(app);
-jest.mock("../services/getNutritionValues.test.js");
 const { killRedis } = require("../../services/cache");
-
+jest.mock("../../services/fetchValues.js");
 afterAll(async () => {
   await killRedis();
 });
