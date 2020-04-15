@@ -3,6 +3,7 @@ const app = require("../../server");
 const request = supertest(app);
 const db = require("../../config/connectDb");
 const Recipe = require("../../models/Recipe");
+const { killRedis } = require("../../services/cache");
 
 //mock db
 const payload = {
@@ -23,6 +24,7 @@ afterEach(async () => {
 });
 
 afterAll(async () => {
+  await killRedis();
   await db.close();
 });
 

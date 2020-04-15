@@ -3,6 +3,11 @@ const supertest = require("supertest");
 const app = require("../../server");
 const request = supertest(app);
 jest.mock("../services/getNutritionValues.test.js");
+const { killRedis } = require("../../services/cache");
+
+afterAll(async () => {
+  await killRedis();
+});
 
 describe("recipe endpoint", () => {
   it("should exist", () => {

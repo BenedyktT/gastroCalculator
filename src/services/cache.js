@@ -9,9 +9,15 @@ if (process.env.REDIS_URL) {
   client = redis.createClient(rtg.port, rtg.hostname);
   client.auth(rtg.auth.split(":")[1]);
 } else {
-  client = redis.createClient(localUrl);
+  client = redis.createClient(localUrl.redisUrl);
 }
-
+const killRedis = async () => {
+  await new Promise((resolve) => {
+    client.quit(() => {
+      resolve();
+    });
+  });
+};
 client.hget = promisify(client.hget);
 class Cache {
   constructor(model) {
@@ -29,4 +35,4 @@ class Cache {
   }
 }
 
-module.exports = Cache;
+module.exports = { Cache, killRedis };

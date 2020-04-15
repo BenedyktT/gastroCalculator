@@ -1,7 +1,8 @@
 const fetchValues = require("../../services/fetchValues");
 const generateNutritionReport = require("../../services/generateNutritionReport");
 const Recipe = require("../../models/Recipe");
-const Cache = require("../../services/cache");
+const { Cache } = require("../../services/cache");
+
 const cache = new Cache(Recipe.collection.collectionName);
 module.exports = {
   generateReport: async (recipe) => {
