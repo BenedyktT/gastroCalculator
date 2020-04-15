@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "node ./src/listen.js",
-    "test": "jest --runInBand --forceExit",
+    "test": "jest --runInBand --forceExit --detectOpenHandles",
     "server": "nodemon ./src/listen.js --ignore './client/'",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
